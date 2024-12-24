@@ -47,7 +47,11 @@ urlpatterns = [
     path('rest/generics/<int:pk>', views.generics_pk.as_view()),
 
 # 7 Viewsets  
-    path('rest/viewsets/', include(router.urls))  
+    path('rest/viewsets/', include(router.urls)),
+    
+# 8 Find Movie  
+    path('fbv/findmovie/', views.find_movie),
+    
     
 
 ]
