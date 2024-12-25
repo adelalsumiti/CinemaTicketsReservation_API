@@ -202,4 +202,22 @@ def find_movie(request):
 
 
 
-# 9 Create Reservation
+# 9 Create new Reservation
+@api_view(['POST'])
+def new_reservation(request):
+    
+    movie = Movie.objects.get(
+        hall = request.data['hall'],
+        movie = request.data['movie'],
+        
+    )
+    guest = Guest()
+    guest.name = request.data['name']
+    guest.mobile = request.data['mobile']
+    guest.save()
+    
+    reservation = Reservation()
+    reservation.guest = guest
+    reservation.movie = movie
+    reservation.save()
+    return Response(   status = status.HTTP_201_CREATED)
